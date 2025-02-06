@@ -1,5 +1,14 @@
 import { useState } from 'react'
 import bookLogo from './assets/books.png'
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
+import Navigations from './components/Navigations'
+import Account from './components/Account'
+import Login from './components/Login'
+import Books from './components/Books'
+import Register from './components/Register'
+import SingleBook from "./components/SingleBook"
+
+
 
 function App() {
   const [token, setToken] = useState(null)
@@ -13,6 +22,19 @@ function App() {
       <p>You may need to use the `token` in this top-level component in other components that need to know if a user has logged in or not.</p>
 
       <p>Don't forget to set up React Router to navigate between the different views of your single page application!</p>
+
+      <BrowserRouter>
+        <Navigations/>
+        <Routes>
+          <Route path='/' element={<Register/>}/>  
+          <Route path='/account' element={<Account/>}/>
+          <Route path='/books' element={<Books/>}/>
+          <Route path='/books/:id' element={<SingleBook/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+        </Routes>
+      </BrowserRouter>
+
     </>
   )
 }
