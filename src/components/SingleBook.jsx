@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function SingleBook() {
     const { id } = useParams()
@@ -21,11 +22,19 @@ function SingleBook() {
         fetchSingleBook();
     }, [id])
 
-  return ( 
-    <>
-    catalog
-    </>
-  )
-}
+    if (!singleBook) {
+        return <div>Loading...</div>
+    }
 
+  return ( 
+    <div>
+        <img src={singleBook.coverimage} alt={singleBook.title} />
+        <h2>{singleBook.title}</h2>
+        <p>{singleBook.author}</p>
+        <p>{singleBook.description}</p>
+        <button>{singleBook.available}</button>
+        <Link to="/books"> Go Back</Link>
+    </div>
+)
+}
 export default SingleBook

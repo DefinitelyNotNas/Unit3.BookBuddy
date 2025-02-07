@@ -2,8 +2,11 @@
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import './Books.css'
+import { useNavigate } from 'react-router-dom'
 
 function Books() {
+    const navigate = useNavigate();
     const API = "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books"
     const [ catalog , setCatalog] = useState([])
 
@@ -31,7 +34,7 @@ function Books() {
     <div className='container'>
         {catalog.map((book) => (
             <div key={book.id} className='book'>
-                <a>
+                <a onClick={() => navigate(`/books/${book.id}`)}>
                     <img src={book.coverimage} alt={book.title} />
                     <p>{book.title}</p>
                     <p>Author: {book.author} </p>

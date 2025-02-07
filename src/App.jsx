@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Books from './components/Books'
 import Register from './components/Register'
 import SingleBook from "./components/SingleBook"
+import ProtectedRoute from './components/ProtectedRoute'
 
 
 
@@ -26,8 +27,10 @@ function App() {
       <BrowserRouter>
         <Navigations/>
         <Routes>
-          <Route path='/' element={<Register/>}/>  
-          <Route path='/account' element={<Account/>}/>
+          <Route path='/' element={<Register/>}/> 
+          <Route element={<ProtectedRoute/>}>
+            <Route path='/account' element={<Account/>}/>
+          </Route>
           <Route path='/books' element={<Books/>}/>
           <Route path='/books/:id' element={<SingleBook/>}/>
           <Route path='/login' element={<Login/>}/>
