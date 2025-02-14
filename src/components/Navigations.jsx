@@ -10,8 +10,12 @@ function Navigations() {
 			<nav>
 				<Link to="/account">Account</Link>
 				<Link to="/books">Library</Link>
-				<Link to="/login">Login</Link>
-				<Link to="/register">Register</Link>
+				{!localStorage.getItem("token") && (
+					<Link to="/login">Login</Link>
+				)}
+				{!localStorage.getItem("token") && (
+					<Link to="/register">Register</Link>
+				)}
 			</nav>
 		</div>
 	);

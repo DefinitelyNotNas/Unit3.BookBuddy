@@ -27,6 +27,7 @@ function Login() {
 
 			localStorage.setItem("token", data.token);
 			navigate("/account");
+			window.location.reload();
 		} catch (error) {
 			console.error(error);
 		}
